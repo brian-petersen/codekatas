@@ -1,11 +1,14 @@
 import unittest
 
-from binchop import chop_iterative
+import binchop
 
 
 class TestBinChop(unittest.TestCase):
     def test_chop_iterative(self):
-        run_tests(self, chop_iterative)
+        run_tests(self, binchop.chop_iterative)
+
+    def test_chop_recursive(self):
+        run_tests(self, binchop.chop_recursive)
 
 
 def run_tests(test_case, chop_impl):
