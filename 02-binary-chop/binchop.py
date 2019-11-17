@@ -7,10 +7,8 @@ def chop_iterative(value, values):
 
         if values[mid] == value:
             return mid
-
         elif values[mid] < value:
             left = mid + 1
-
         else:
             right = mid - 1
 
