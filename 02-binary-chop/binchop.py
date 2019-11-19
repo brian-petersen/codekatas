@@ -36,3 +36,21 @@ def chop_recursive(value, values, offset=0):
         next_offset = len(left) + offset
 
     return chop_recursive(value, next_values, next_offset)
+
+
+def chop_recursive2(value, values):
+    return _chop_recursive2(value, values, 0, len(values) - 1)
+
+
+def _chop_recursive2(value, values, left, right):
+    if left > right:
+        return -1
+
+    mid = (left + right) // 2
+
+    if values[mid] == value:
+        return mid
+    elif values[mid] > value:
+        return _chop_recursive2(value, values, left, mid - 1)
+    else:
+        return _chop_recursive2(value, values, mid + 1, right)
