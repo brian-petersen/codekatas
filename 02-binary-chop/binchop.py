@@ -1,3 +1,6 @@
+import asyncio
+
+
 def chop_iterative(value, values):
     left = 0
     right = len(values) - 1
@@ -54,3 +57,24 @@ def _chop_recursive2(value, values, left, right):
         return _chop_recursive2(value, values, left, mid - 1)
     else:
         return _chop_recursive2(value, values, mid + 1, right)
+
+
+def chop_conglomerate(value, values):
+    async def iterative():
+        return chop_iterative(value, values)
+    
+    async def recursive():
+        return chop_recursive(value, values)
+
+    async def recursive2():
+        return chop_recursive2(value, values)
+
+    awaitable = asyncio.wait(
+        {iterative(), recursive(), recursive2()},
+        return_when=asyncio.FIRST_COMPLETED
+    )
+
+    (tasks, _) = asyncio.run(awaitable)
+    task = next(iter(tasks))
+
+    return task.result()

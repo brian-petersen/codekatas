@@ -13,6 +13,9 @@ class TestBinChop(unittest.TestCase):
     def test_chop_recursive2(self):
         run_tests(self, binchop.chop_recursive2)
 
+    def test_chop_conglomerate(self):
+        run_tests(self, binchop.chop_conglomerate)
+
 
 def run_tests(test_case, chop_impl):
     test_case.assertEqual(-1, chop_impl(3, []))
