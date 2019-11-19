@@ -14,6 +14,7 @@ def chop_iterative(value, values):
 
     return -1
 
+
 def chop_recursive(value, values, offset=0):
     if len(values) == 0:
         return -1
