@@ -26,7 +26,7 @@ if __name__ == '__main__':
     with open(wordlist_path) as words:
         array = _make_array(words, n)
 
-    with open('test_words.dict') as test_words:
+    with open('test-words.dict') as test_words:
         test_words = [word.strip() for word in test_words.readlines()]
 
     test_words_found = [1 if _array_contains_word(array, word, n) else 0 for word in test_words]
